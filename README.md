@@ -5,14 +5,16 @@ Kernel*](https://www.kernel.org/doc/Documentation/SubmittingPatches),
 the [git man pages](http://git-scm.com/doc) and various practices popular
 among the community.
 
-Translations of the guide are available in the following languages:
-
+Translations are available in the following languages:
+dep
 * [Chinese (Simplified)](https://github.com/aseaday/git-style-guide)
 * [Chinese (Traditional)](https://github.com/JuanitoFatas/git-style-guide)
 * [French](https://github.com/pierreroth64/git-style-guide)
+* [Greek](https://github.com/grigoria/git-style-guide)
 * [Japanese](https://github.com/objectx/git-style-guide)
 * [Korean](https://github.com/ikaruce/git-style-guide)
 * [Portuguese](https://github.com/guylhermetabosa/git-style-guide)
+* [Thai](https://github.com/zondezatera/git-style-guide)
 * [Ukrainian](https://github.com/denysdovhan/git-style-guide)
 
 If you feel like contributing, please do so! Fork the project and open a pull
@@ -61,8 +63,8 @@ request.
   Merge at will the personal branches to the team-wide branch (see ["Merging"](#merging)).
   Eventually, the team-wide branch will be merged to "master".
 
-* Delete your branch from the upstream repository after it's merged (unless
-  there is a specific reason not to).
+* Delete your branch from the upstream repository after it's merged, unless
+  there is a specific reason not to.
 
   Tip: Use the following command while being on "master", to list merged
   branches:
@@ -77,6 +79,9 @@ request.
   *logical changes* in one commit. For example, if a patch fixes a bug and
   optimizes the performance of a feature, split it into two separate commits.
 
+  *Tip: Use `git add -p` to interactively stage specific portions of the
+  modified files.*
+
 * Don't split a single *logical change* into several commits. For example,
   the implementation of a feature and the corresponding tests should be in the
   same commit.
@@ -86,6 +91,10 @@ request.
 
 * Commits should be ordered *logically*. For example, if *commit X* depends
   on changes done in *commit Y*, then *commit Y* should come before *commit X*.
+
+Note: While working alone on a local branch that *has not yet been pushed*, it's
+fine to use commits as temporary snapshots of your work. However, it still
+holds true that you should apply all of the above *before* pushing it.
 
 ### Messages
 
@@ -125,7 +134,7 @@ request.
   It should also provide any pointers to related resources (eg. link to the
   corresponding issue in a bug tracker):
 
-  ```shell
+  ```text
   Short (50 chars or fewer) summary of changes
 
   More detailed explanatory text, if necessary. Wrap it to
@@ -150,12 +159,12 @@ request.
   Ultimately, when writing a commit message, think about what you would need
   to know if you run across the commit in a year from now.
 
-* If a *commit A* depends on another *commit B*, the dependency should be
-  stated in the message of *commit A*. Use the commit's hash when referring to
+* If a *commit A* depends on *commit B*, the dependency should be
+  stated in the message of *commit A*. Use the SHA1 when referring to
   commits.
 
   Similarly, if *commit A* solves a bug introduced by *commit B*, it should
-  be stated in the message of *commit A*.
+  also be stated in the message of *commit A*.
 
 * If a commit is going to be squashed to another commit use the `--squash` and
   `--fixup` flags respectively, in order to make the intention clear:
@@ -192,18 +201,18 @@ request.
 
     2. Rebase it onto the branch it's going to be merged to:
 
-       ```shell
-       [my-branch] $ git fetch
-       [my-branch] $ git rebase origin/master
-       # then merge
-       ```
+      ```shell
+      [my-branch] $ git fetch
+      [my-branch] $ git rebase origin/master
+      # then merge
+      ```
 
-       This results in a branch that can be applied directly to the end of the
-       "master" branch and results in a very simple history.
+      This results in a branch that can be applied directly to the end of the
+      "master" branch and results in a very simple history.
 
-       *(Note: This strategy is better suited for projects with short-running
-       branches. Otherwise it might be better to occassionally merge the
-       "master" branch instead of rebasing onto it.)*
+      *(Note: This strategy is better suited for projects with short-running
+      branches. Otherwise it might be better to occassionally merge the
+      "master" branch instead of rebasing onto it.)*
 
 * If your branch includes more than one commit, do not merge with a
   fast-forward:
@@ -237,7 +246,7 @@ request.
   for personal use, such as to bookmark commits for future reference.
 
 * Keep your repositories at a good shape by performing maintenance tasks
-  occasionally, in your local *and* remote repositories:
+  occasionally:
 
   * [`git-gc(1)`](http://git-scm.com/docs/git-gc)
   * [`git-prune(1)`](http://git-scm.com/docs/git-prune)
@@ -247,9 +256,10 @@ request.
 
 ![cc license](http://i.creativecommons.org/l/by/4.0/88x31.png)
 
-This work is licensed under a Creative Commons Attribution 4.0
-International license.
+This work is licensed under a [Creative Commons Attribution 4.0
+International license](https://creativecommons.org/licenses/by/4.0/).
 
 # Credits
 
 Agis Anastasopoulos / [@agisanast](https://twitter.com/agisanast) / http://agis.io
+... and [contributors](https://github.com/agis-/git-style-guide/graphs/contributors)!
